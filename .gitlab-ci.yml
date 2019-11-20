@@ -1,0 +1,31 @@
+image: alpine:latest
+
+# before_script:
+#   - wget https://dl.google.com/go/go1.13.3.linux-amd64.tar.gz
+#   - tar -C /usr/local -xzf go1.13.3.linux-amd64.tar.gz
+#   - cd /usr/local/go
+#   - pwd
+#   - export GOROOT=/usr/local/go
+#   - export PATH=$PATH:/usr/local/go/bin
+#   - export GOPATH=/root/go 
+#   - export GO111MODULE=on
+#   - export GOPROXY=https://goproxy.cn,direct
+#   - cd /usr/local/go/bin
+#   - chmod +x go
+#   - chmod +x gofmt
+#   - source /etc/profile
+#   - echo $GOROOT
+
+stages:
+  - build
+  - test
+  - deploy
+
+job1:
+  stage: build
+  script:
+    - go build ./main
+  only:
+    - master
+  tags:
+    - yuwei
