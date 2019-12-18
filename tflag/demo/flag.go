@@ -1,7 +1,7 @@
 /*
  * @Author: your name
  * @Date: 2019-11-22 15:17:53
- * @LastEditTime: 2019-11-22 18:59:54
+ * @LastEditTime: 2019-11-23 14:35:25
  * @LastEditors: Please set LastEditors
  * @Description: In User Settings Edit
  * @FilePath: \GoWebd:\pratice\tflag\demo\flag.go
@@ -21,6 +21,7 @@ var cliGender = flag.String("gender", "male", "Input Your Gender")
 // 定义一个值类型的命令行参数变量，在 Init() 函数中对其初始化
 // 因此，命令行参数对应变量的定义和初始化是可以分开的
 var cliFlag int
+
 var selfFlag self
 
 func Init() {
