@@ -10,6 +10,7 @@ func main() {
 	config.Init()
 	redisclient.Init()
 	conn := redisclient.GetRedis()
+
 	// demo.Schedule_row_cache(*conn, "277", 5)
 	// demo.Schedule_row_cache(*conn, "294", 5)
 	// demo.Schedule_row_cache(*conn, "279", 5)
