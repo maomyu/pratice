@@ -26,16 +26,18 @@ func Init() {
 		logger.Sugar.Fatalf(err.Error())
 		return
 	}
-
+	fmt.Println(config.GetRedisConfig())
 	if config.GetRedisConfig().GetEnabled() {
 		initRedisPool()
 	}
 	inited = true
+	fmt.Println("初始化成功")
 }
 
 // 初始化一个redis连接池
 func initRedisPool() {
-	p, _ = New(createConnection, config.GetRedisConfig().GetDBNum())
+	fmt.Println("初始化redispool")
+	p, _ = New(createConnec, config.GetRedisConfig().GetDBNum())
 }
 
 type redisConnection struct {
@@ -52,10 +54,13 @@ func (r *redisConnection) Close() error {
 }
 
 // 生成redis连接
-func createConnection() (io.Closer, error) {
+func createConnec() (io.Closer, error) {
+	fmt.Println("生成redis连接")
 	id := atomic.AddInt32(&idCounter, 1)
+
 	redisConn, _ := redis.Dial("tcp", config.GetRedisConfig().GetConn())
 	redisConn.Send("auth", config.GetRedisConfig().GetPassword)
+
 	return &redisConnection{
 		id:   id,
 		conn: &redisConn,
