@@ -19,7 +19,7 @@ func IpToScore(ip string) int {
 	}
 	return score
 }
-func ImportIpToRedis(conn *redis.Conn, filename string) error {
+func ImportIpToRedis(conn redis.Conn, filename string) error {
 	// csv_file :=csv.NewReader(os.OpenFile())
 	csv_file, err := ioutil.ReadFile(filename)
 	if err != nil {
