@@ -1,7 +1,6 @@
 package redispool
 
 import (
-	"fmt"
 	"io"
 
 	"github.com/garyburd/redigo/redis"
@@ -10,7 +9,6 @@ import (
 // 新创建一个连接会话
 func NewSession() (*redisConnection, error, *Pool, io.Closer) {
 	conn, err := p.Acquire()
-	fmt.Println("*******")
 	if err != nil {
 		return nil, err, p, conn.(*redisConnection)
 	}
@@ -24,6 +22,6 @@ func (f *redisConnection) GetID() int32 {
 	return f.id
 }
 
-func (f *redisConnection) GetConn() *redis.Conn {
+func (f *redisConnection) GetConn() redis.Conn {
 	return f.conn
 }
