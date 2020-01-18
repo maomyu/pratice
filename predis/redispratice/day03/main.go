@@ -17,6 +17,6 @@ func main() {
 
 	result := demo3.Get_Contact(f.GetConn(), "陈威")
 	fmt.Println(result)
-	result = demo3.Fetch_autocomplete_list(f.GetConn(), "陈威", "徐")
+	result = demo3.Fetch_autocomplete_list(f.GetConn(), "陈威", "w")
 	fmt.Println(result)
 }

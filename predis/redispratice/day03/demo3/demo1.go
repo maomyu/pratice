@@ -36,14 +36,17 @@ func Get_Contact(conn redis.Conn, user string) []string {
 	}
 
 	result := get_changeto_list(reply)
+	// result, _ = redis.Strings(reply, nil)
 	return result
 }
 func get_changeto_list(reply interface{}) []string {
 	strs := reply.([]interface{})
+
 	result := []string{}
 	for i := 0; i < len(strs); i++ {
 		result = append(result, string(strs[i].([]uint8)))
 	}
+
 	return result
 }
 
