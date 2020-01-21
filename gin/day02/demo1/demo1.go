@@ -16,17 +16,7 @@ func main() {
 	router := gin.Default()
 
 	// 绑定JSON的例子 ({"user": "manu", "password": "123"})
-	router.POST("/loginJSON", func(c *gin.Context) {
-		var json Login
-
-		if c.BindJSON(&json) == nil {
-			if json.User == "manu" && json.Password == "123" {
-				c.JSON(http.StatusOK, gin.H{"status": "you are logged in"})
-			} else {
-				c.JSON(http.StatusUnauthorized, gin.H{"status": "unauthorized"})
-			}
-		}
-	})
+	router.POST("/loginJSON", func(c *gin.Context) {})
 
 	// 绑定普通表单的例子 (user=manu&password=123)
 	router.POST("/loginForm", func(c *gin.Context) {
