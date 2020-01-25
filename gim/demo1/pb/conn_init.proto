@@ -1,0 +1,17 @@
+syntax = "proto3";
+
+import "tcp.proto";
+package pb;
+// protoc -I. --go_out=plugins=grpc:. .\conn_init.proto
+message DeliverMessageReq {
+    int64 devicee_id = 1;
+    Message message = 2;
+}
+
+message DeliverMessageResp {
+
+}
+
+service ConnInt {
+    rpc DeliverMessage (DeliverMessageReq) returns (DeliverMessageResp);
+}
