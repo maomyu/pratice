@@ -1,17 +1,17 @@
-package main 
+package tree
 
-// 定义一个二叉树类
+// 定义一个二叉查找树类
 type binaryTree struct {
 	// 根结点
 	root *treeNode
-	// 二叉树的高度
-	h int
+	// 结点的数量
+	count int
 }
 
+// 二叉查找树
 func NewBinaryTree() *binaryTree {
 	return &binaryTree{
 		root: nil,
-		h:    0,
 	}
 }
 
@@ -24,15 +24,7 @@ func (t *binaryTree) SetRoot(val treeNode) {
 	t.root = &val
 }
 
-// 获取深度
-func (t *binaryTree) H() int {
-	return t.h
-}
-
-func (t *binaryTree) SetH(h int) {
-	t.h = h
-}
-
+// 创建一个二叉查找树
 func (t *binaryTree) CreateTree(val int) {
 	if t.Root() == nil {
 		t.SetRoot(treeNode{
@@ -44,12 +36,12 @@ func (t *binaryTree) CreateTree(val int) {
 		root := t.Root()
 		for root != nil {
 			if val <= root.Val && root.Left == nil {
-				fmt.Println("插入左节点")
 				root.Left = &treeNode{val, nil, nil}
+				t.count++
 				break
 			} else if val > root.Val && root.Right == nil {
-				fmt.Println("插入右节点")
 				root.Right = &treeNode{val, nil, nil}
+				t.count++
 				break
 			} else if val <= root.Val && root.Left != nil {
 				root = root.Left
