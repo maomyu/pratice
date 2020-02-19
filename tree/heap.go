@@ -1,7 +1,5 @@
 package tree
 
-import "fmt"
-
 type heap struct {
 	val      []int
 	capacity int
@@ -36,6 +34,14 @@ func (h *heap) CreateMinHeap(val int) {
 }
 
 // 堆排序
+func (h *heap) SortHeap() []int {
+	data := []int{}
+	for h.count > 0 {
+		data = append(data, h.val[0])
+		h.MoveRoot()
+	}
+	return data
+}
 
 // 堆删除根节点
 func (h *heap) MoveRoot() {
@@ -47,7 +53,7 @@ func (h *heap) MoveRoot() {
 }
 
 func (h *heap) AdjustHeap() {
-	fmt.Println(h.val)
+	// fmt.Println(h.val)
 	top := 0
 	// 左孩子结点
 	j := 2*top + 1

@@ -17,4 +17,5 @@ func TestCreateHeap(t *testing.T) {
 	fmt.Println(h.val)
 	h.MoveRoot()
 	fmt.Println(h.val)
+	fmt.Println(h.SortHeap())
 }

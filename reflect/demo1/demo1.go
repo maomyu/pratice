@@ -20,7 +20,8 @@ func GetField(i interface{}, parm string) (interface{}, error) {
 	}
 	value := reflect.ValueOf(i)
 	pvalue := value.FieldByName(parm)
-	return pvalue.Interface, nil
+	fmt.Println(pvalue)
+	return pvalue, nil
 }
 
 // 判断是否是结构体
@@ -34,6 +35,6 @@ func IsHasField(i interface{}, k []reflect.Kind) bool {
 }
 func main() {
 	s := Student{"asdflkdjkls", "yuwei", 12}
-	// GetField(s, "ID")
-	fmt.Println(IsHasField(s))
+	value, _ := GetField(s, "ID")
+	fmt.Println(value)
 }

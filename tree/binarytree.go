@@ -51,3 +51,21 @@ func (t *binaryTree) CreateTree(val int) {
 		}
 	}
 }
+
+// 判断二叉查找树中是否有value
+func (t *binaryTree) IsContainValue(value int) bool {
+	if t.Root() == nil {
+		return false
+	}
+	root := t.Root()
+	for root != nil {
+		if root.Val < value {
+			root = root.Right
+		} else if root.Val > value {
+			root = root.Left
+		} else {
+			return true
+		}
+	}
+	return false
+}
